@@ -1,0 +1,65 @@
+<section>
+ <div class="well no-bottom-margin no-top-margin"><form class="form-inline" role="form">
+  <div class="form-group">
+    <label for="player">Player:</label>
+    <input data-ng-model="playerId" type="text" class="form-control" id="player" value="{{playerId}}">
+  </div>
+  <div class="form-group">
+    <label for="days">Days:</label>
+  <select name="days" class="form-control" id="days" data-ng-model="dateOptions.selectedOption" data-ng-change="updateDates()" 
+          data-ng-options="option.id for option in dateOptions.availableOptions track by option.id">
+  </select>
+</div>
+
+  <div class="form-group">
+    <label for="start-date">Start:</label>
+      <input style="width:140px" type="date" id="start-date" data-ng-model="startDate">
+  </div>
+ <div class="form-group">
+    <label for="end-date">End:</label>
+      <input style="width:140px" type="date" id="end-date" data-ng-model="endDate">
+  </div>    
+  <button data-ng-click="getPlayerInfo()" type="submit" class="btn btn-default">Update</button>
+</form>
+</div>
+
+<!--Player Info-->
+    <div ng-show="playerInfo.PlayerName" class="well well-sm inverse-background inverse-text no-top-margin border-radius-4px">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3"><h5>{{playerInfo.PlayerName}}</h5> </div>
+            <div class="col-xs-5 col-sm-3"><h5><label class="right-padding">Status:</label>{{  playerInfo.PlayerStatus}}</h5></div>
+        </div>
+      
+    </div>
+<div ng-hide="playerId"><div class="center"><h3>Please provide a player id.</h3></div></div>    
+<div ng-show="updatePressed"><div class="center"><h3>Loading data...</h3></div></div>    
+<div ng-show="playerInfo.PlayerName" class="container-fluid">
+  <div class="row">
+      <div class="col-sm-3"><h4><u>Slots</u></h4>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Coin In</span><span style="float:right">{{playerInfo.CoinIn}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Jackpot</span><span style="float:right">{{playerInfo.JackPot}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual Win</span><span style="float:right">{{playerInfo.ActWin}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo Win</span><span style="float:right">{{playerInfo.TheoWin}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total FSP</span><span style="float:right">{{playerInfo.TotalFSP}}</span></div>
+            </div>
+        </div>
+        <div class="col-sm-3"><h4><u>Comps</u></h4>
+      <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total Comp</span><span style="float:right">{{playerInfo.TotalComp}}</span></div>
+            </div>
+      </div>
+        <div class="col-sm-3">Gaming Summary - Net</div>
+        <div class="col-sm-3">Comp Summary</div>
+    </div>
+  
+</div>
+</section>

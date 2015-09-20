@@ -1,0 +1,100 @@
+USE [RWSMKT]
+GO
+/****** Object:  StoredProcedure [dbo].[asp_CompLookupLog]    Script Date: 9/18/2015 5:20:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER Procedure [dbo].[asp_CompLookupLog]
+
+
+@PlayerID  nvarchar(50), @Slot_Act nvarchar(50), @Slot_Theo nvarchar(50), @Table_Act nvarchar(50), @Table_Theo nvarchar(50), @FreePlayPromo nvarchar(50), @FreePlayPoints nvarchar(50), @FreePlayDraw nvarchar(50), @Points nvarchar(50) , @PointAvailable nvarchar(50),  @Comps nvarchar(50), 
+@PatronCoupons nvarchar(50), @Kiosk nvarchar(50),
+ @TheoMin nvarchar(50), @TheoMid nvarchar(50), @TheoMax nvarchar(50), @ActMin nvarchar(50), @ActMid nvarchar(50), @ActMax nvarchar(50), @StartDate DateTime, @EndDate DateTime, @Days nvarchar(50), @UserName Varchar(100), @Comment Varchar(1000)
+
+AS
+ 
+
+ Set Nocount On; 
+
+Begin
+
+Insert into  dt_CompLookupLog ( PlayerID, SlotWin, SlotTheo, TableWin, TableTheo, FreePlayPromo, FreePlayPoints, FreePlayDraw, Points, PointsAvailable,   Comps,   PatronCoupons, Kiosk, TheoMin, TheoMid, TheoMax, 
+                         ActMin, ActMid, ActMax, StartDate, EndDate, Days, UserName, Comment)
+
+Select @PlayerID,  dbo.ufn_formatInt(@Slot_Act), dbo.ufn_formatInt(@Slot_Theo), dbo.ufn_formatInt(@Table_Act), dbo.ufn_formatInt(@Table_Theo), 
+dbo.ufn_formatInt(@FreePlayPromo), dbo.ufn_formatInt(@FreePlayPoints), dbo.ufn_formatInt(@FreePlayDraw), dbo.ufn_formatInt(@Points), dbo.ufn_formatInt(@PointAvailable), 
+dbo.ufn_formatInt(@Comps), dbo.ufn_formatInt(@PatronCoupons), dbo.ufn_formatInt(@Kiosk),
+ dbo.ufn_formatInt(@TheoMin), dbo.ufn_formatInt(@TheoMid), dbo.ufn_formatInt(@TheoMax), dbo.ufn_formatInt(@ActMin), dbo.ufn_formatInt(@ActMid), dbo.ufn_formatInt(@ActMax), @StartDate, @EndDate, @Days, @UserName, @Comment
+
+ 
+ 
+ Declare @MaxID int
+Set @MaxID = (Select Min(LogiD) from dt_CompLookupLog where dbo.ufn_FDOM(Convert(Date,LookupDateTime)) = dbo.ufn_FDOM(Convert(Date,GetDate())))
+
+Set @MaxID = Isnull(@MaxID,0)
+
+Declare @Record int
+Set @Record = (Select Max(LogiD) from dt_CompLookupLog)
+
+Declare @Date varchar(15)
+Set @Date = (select Left(Right(convert(varchar, cast(GetDate() as datetime), 112),6),4))
+
+Declare @Daily Varchar(10)
+
+Set @Daily = (Select case when @MaxID = 0 then 1 else @Record-@MaxID+1  end )
+
+
+Declare @NewID varchar(15)
+
+Set @NewID = @Date+'-'+@Daily
+
+
+Update dt_CompLookupLog set LookupID = @NewID where LogID = @Record
+
+End
+
+
+
+
+USE [RWSMKT]
+GO
+/****** Object:  StoredProcedure [dbo].[asp_CompLookupLogID]    Script Date: 9/18/2015 5:21:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER Procedure [dbo].[asp_CompLookupLogID]
+
+@PlayerID int
+
+AS
+Set nocount on;
+
+Begin
+
+Declare @MaxID int
+
+Set @MaxID = (Select Max(LogID) from dt_CompLookupLog (nolock) where playerID = @PlayerID)
+
+Select LookupID from dt_CompLookupLog (nolock) where LogID = @MaxID
+
+End
+
+
+
+
+MaxSlot                MaxTable               MidSlot                MidTable               MinSlot                MinTable               PlayerID    Name                                                                                                 Status     PointBal             PointBalVal          Slot_CI              Slot_JP              Slot_Act             Slot_Theo            ActvTheo             ActvTheoNum                             Slots_FreePlayPromo  Slots_FreePlayPoints Slots_FreePlayDrawing Slot_FreePlayTotal   Slot_AvgBet                             Slot_BasePTs         Slot_BonusPts        Slot_TotalPts Slot_PtsCost           Slot_NetWin          Slot_NetTheo         Table_Act            Table_Theo           Table_Time           BingoWrite           GADT                 GADW                 Gaming_Days Gaming_Theo          Gaming_Win           Comp_Max             Comp_Mid             Comp_Min             Comp_MaxAct          Comp_MidAct          Comp_MinAct          Comp_MaxNoFSP        Comp_MidNoFSP        Comp_MinNoFSP        Comp_MaxNoKiosk      Comp_MidNoKiosk      Comp_MinNoKiosk      CompIssued           Comp_Total           PatronCoupons        KioskCoupons         Total_Coupons          Total_Days  Total_Expenses       NetTheo              NetWin               TheoReinvest         ActualReinvest       Gaming_PointComp     NonGaming_PointComp  Total_PointComp      Total_PtsCost        Comp_Concert         Comp_FNB             Comp_Hotel           Comp_Nightlife       Comp_Other           Comp_Retail          Comp_SPA             StartDate               EndDate                 Days																																																																																																							
+---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- --------------------------------------- -------------------- -------------------- --------------------- -------------------- --------------------------------------- -------------------- -------------------- ------------- ---------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ----------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ---------------------- ----------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ----------------------- ----------------------- -----------																																																																																																							
+0.18                   0.15                   0.17                   0.12                   0.16                   0.1                    1000254     CRAIG ABBOTT                                                                                         Elite      69,996               69                   1,193                0                    -43                  54                   -0.8                 -0.801270                               10                   0                    0                     10                   1.58                                    861                  0                    861           0.861                  -53                  44                   0                    0                    0                    0                    22                   -26                  2           44                   -53                  0                    0                    0                    0                    0                    0                    8                    8                    7                    8                    8                    7                    0                    0                    0                    0                    0                      2           11                   43                   -54                  20.29 %              -25.32 %             0                    0                    0                    1                    0                    0                    0                    0                    0                    0                    0                    2015-09-01 00:00:00.000 2015-09-30 00:00:00.000 29																																																																																																							
+																																																																																																							
+																																																																																																							
+																																																																																																							
+MaxSlot                MaxTable               MidSlot                MidTable               MinSlot                MinTable               PlayerID    Name                                                                                                 Status     PointBal             PointBalVal          Slot_CI              Slot_JP              Slot_Act             Slot_Theo            ActvTheo             ActvTheoNum                             Slots_FreePlayPromo  Slots_FreePlayPoints Slots_FreePlayDrawing Slot_FreePlayTotal   Slot_AvgBet                             Slot_BasePTs         Slot_BonusPts        Slot_TotalPts Slot_PtsCost           Slot_NetWin          Slot_NetTheo         Table_Act            Table_Theo           Table_Time           BingoWrite           GADT                 GADW                 Gaming_Days Gaming_Theo          Gaming_Win           Comp_Max             Comp_Mid             Comp_Min             Comp_MaxAct          Comp_MidAct          Comp_MinAct          Comp_MaxNoFSP        Comp_MidNoFSP        Comp_MinNoFSP        Comp_MaxNoKiosk      Comp_MidNoKiosk      Comp_MinNoKiosk      CompIssued           Comp_Total           PatronCoupons        KioskCoupons         Total_Coupons          Total_Days  Total_Expenses       NetTheo              NetWin               TheoReinvest         ActualReinvest       Gaming_PointComp     NonGaming_PointComp  Total_PointComp      Total_PtsCost        Comp_Concert         Comp_FNB             Comp_Hotel           Comp_Nightlife       Comp_Other           Comp_Retail          Comp_SPA             StartDate               EndDate                 Days																																																																																																							
+---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- --------------------------------------- -------------------- -------------------- --------------------- -------------------- --------------------------------------- -------------------- -------------------- ------------- ---------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ----------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ---------------------- ----------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- -------------------- ----------------------- ----------------------- -----------																																																																																																							
+0.18                   0.15                   0.17                   0.12                   0.16                   0.1                    1000273     KAORU ABBOTT                                                                                         Elite      3,419                3                    1,546                0                    120                  73                   1.6                  1.634812                                0                    0                    0                     0                    1.49                                    387                  0                    387           0.387                  120                  73                   0                    0                    0                    0                    37                   60                   2           73                   120                  12                   12                   11                   21                   19                   18                   12                   12                   11                   12                   12                   11                   0                    0                    0                    0                    0                      2           0                    73                   119                  0.53 %               0.32 %               0                    0                    0                    0                    0                    0                    0                    0                    0                    0                    0                    2015-09-01 00:00:00.000 2015-09-30 00:00:00.000 29																																																																																																							
+																																																																																																							
+																																																																																																							
+																																																																																																							
