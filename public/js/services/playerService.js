@@ -12,7 +12,7 @@ services.factory('playerService', ['$http', function($http){
         _playerId = playerId;
         _startDate = startDate;
         _endDate = endDate;
-        return $http.get('/player/' + playerId);
+        return $http.get('/api/player/' + playerId);
 //          
     };
     

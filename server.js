@@ -16,26 +16,47 @@ var config = {
 app.use(express.static('public'));
 
 //routes
-app.get('/player/:id', function(req, res) {
+app.get('/api/player/:id', function(req, res) {
 
     var connection =  new sql.Connection(config, function(err) {
 
-    var request = new sql.Request(connection);
-    
-    request.input('PlayerId', sql.Int, req.params.id);
-    request.execute('dbo.usp_TomTest', function(err, recordsets) {
-        res.send(recordsets);
-    });   
-    
+        var request = new sql.Request(connection);
 
+        request.input('PlayerId', sql.Int, req.params.id);
+        request.execute('dbo.usp_TomTest', function(err, recordsets) {
+            res.send(recordsets);
+        });   
+
+
+    });
+    
+    connection.on('error', function(err) {
+        console.log("there was an error");
+    });    
 });
+
+app.post('/api/login', function(req, res) {
+
+    //need to add body parser to receive the json from the angular call
     
-connection.on('error', function(err) {
-    console.log("there was an error");
-});    
+    var connection =  new sql.Connection(config, function(err) {
+
+        var request = new sql.Request(connection);
+
+        request.input('PlayerId', sql.Int, req.params.id);
+        request.execute('dbo.usp_TomTest', function(err, recordsets) {
+            res.send(recordsets);
+        });   
 
 
+    });
+    
+    connection.on('error', function(err) {
+        console.log("there was an error");
+    });    
 });
+
+
 
 app.listen(3000, function(){
     console.log("running on port 3000");

@@ -1,6 +1,6 @@
 'use strict';
 
-services.factory('userSessionService', ['$http', function($scope, $http){
+services.factory('userSessionService', ['$http', function($http){
     return {
         userId: "",
         login: function(data){
