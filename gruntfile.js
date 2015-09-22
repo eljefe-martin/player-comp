@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         uglify: {
             build: {
                 src: 'src/js/*.js',
-                dest: 'js/script.min.js'
+                dest: 'public/js/script.min.js'
             },
             dev: {
                 options: {
@@ -15,9 +15,10 @@ module.exports = function(grunt) {
                     compress: false,
                     preserveComments: 'all'
                 },
-                src: 'src/js/*.js',
-                dest: 'js/script.min.js'
+                src: 'src/js/**/*.js',
+                dest: 'public/js/script.min.js'
             }
+            
         },
         sass: {
             dev: {
@@ -25,7 +26,7 @@ module.exports = function(grunt) {
                     outputStyle: 'expanded'
                 },
                 files: {
-                    'css/styles.css' : 'src/scss/app.scss'
+                    'public/css/styles.css' : 'src/scss/**/*.scss'
                 }
             },
             build: {
@@ -33,13 +34,13 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    'css/styles.css' : 'src/scss/app.scss'
+                    'public/css/styles.css' : 'src/scss/**/*.scss'
                 }
             }
         },
         watch: {
             js: {
-                files: ['src/js/*.js'],
+                files: ['src/js/**/*.js'],
                 tasks: ['uglify:dev']
             },
             css: {

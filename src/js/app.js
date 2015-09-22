@@ -8,7 +8,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
         //any state that needs the log-comments just follows this pattern
-      .state('player', {
+        .state('player', {
         url: '/player',
         views: {
             "" : {
