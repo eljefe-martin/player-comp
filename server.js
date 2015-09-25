@@ -35,6 +35,40 @@ app.get('/api/player/:id', function(req, res) {
     });    
 });
 
+app.get('/api/comments/:id', function(req, res) {
+
+   
+     var commentLog = 
+            {
+                comments:[
+                    {playerId:123, commentId: 1, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:123, commentId: 2, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:123, commentId: 3, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:123, commentId: 4, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:456, commentId: 5, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:456, commentId: 6, comment:"This is a test comment", commentDate: new Date()},
+                    {playerId:456, commentId: 7, comment:"This is a test comment", commentDate: new Date()},
+                ]
+            };
+    
+    
+    var data = [];
+    
+    commentLog.comments.forEach(function(element, index){
+        if(element.playerId === req.params.id){
+            data.push(element);
+        }    
+        
+    });
+
+    res.send(data);
+});   
+
+
+   
+
+
+
 app.post('/api/login', function(req, res) {
 
     //need to add body parser to receive the json from the angular call

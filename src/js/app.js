@@ -17,7 +17,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
             },
             "log-comment" : {
                 templateUrl: 'views/log-comment.html',
-                controller: 'playerCtrl'
+                controller: 'commentCtrl'
             }
         }
       })
@@ -26,11 +26,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
         views: {
             "" : {
                 templateUrl: 'views/comment.html',
-                controller: 'playerCtrl'
+                controller: 'commentCtrl'
             },
             "log-comment" : {
                 templateUrl: 'views/log-comment.html',
-                controller: 'playerCtrl'
+                controller: 'commentCtrl'
             }
         }
       })
