@@ -5,11 +5,11 @@ controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','play
   
     //contoller function that maps to the service function                                      
     $scope.getCommentLog = function(){
-        //$scope.updatePressed = true;
+        $scope.updatePressed = true;
         commentService.loadCommentLog($scope.playerId, $scope.startDate, $scope.endDate)
             .success(function(res){
                 $scope.commentLog = res;
-               // $scope.updatePressed = false;
+                $scope.updatePressed = false;
                 commentService.setCommentLog($scope.commentLog);
                 
             })

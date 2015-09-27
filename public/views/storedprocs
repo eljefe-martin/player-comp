@@ -83,7 +83,11 @@ Select LookupID from dt_CompLookupLog (nolock) where LogID = @MaxID
 
 End
 
-
+MaxSlot: 0.18,
+MaxTable: 0.15,
+MidSlot: 0.17,
+MidTable: 0.12,
+MinSlot: 0.16,
 
 
 MaxSlot                MaxTable               MidSlot                MidTable               MinSlot                MinTable               PlayerID    Name                                                                                                 Status     PointBal             PointBalVal          Slot_CI              Slot_JP              Slot_Act             Slot_Theo            ActvTheo             ActvTheoNum                             Slots_FreePlayPromo  Slots_FreePlayPoints Slots_FreePlayDrawing Slot_FreePlayTotal   Slot_AvgBet                             Slot_BasePTs         Slot_BonusPts        Slot_TotalPts Slot_PtsCost           Slot_NetWin          Slot_NetTheo         Table_Act            Table_Theo           Table_Time           BingoWrite           GADT                 GADW                 Gaming_Days Gaming_Theo          Gaming_Win           Comp_Max             Comp_Mid             Comp_Min             Comp_MaxAct          Comp_MidAct          Comp_MinAct          Comp_MaxNoFSP        Comp_MidNoFSP        Comp_MinNoFSP        Comp_MaxNoKiosk      Comp_MidNoKiosk      Comp_MinNoKiosk      CompIssued           Comp_Total           PatronCoupons        KioskCoupons         Total_Coupons          Total_Days  Total_Expenses       NetTheo              NetWin               TheoReinvest         ActualReinvest       Gaming_PointComp     NonGaming_PointComp  Total_PointComp      Total_PtsCost        Comp_Concert         Comp_FNB             Comp_Hotel           Comp_Nightlife       Comp_Other           Comp_Retail          Comp_SPA             StartDate               EndDate                 Days																																																																																																							
