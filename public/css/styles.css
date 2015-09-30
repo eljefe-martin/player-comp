@@ -31,3 +31,31 @@
 .border-radius-4px {
   border-radius: 4px;
 }
+
+.center-text {
+  text-align: center;
+}
+
+.right-text {
+  text-align: right;
+}
+
+.top-margin-15 {
+  margin-top: 15px;
+}
+
+.top-margin-15 div {
+  font-weight: bold;
+}
+
+.height-500 {
+  height: 500px;
+}
+
+.background-transparent {
+  background-color: transparent;
+}
+
+.hide {
+  display: none;
+}

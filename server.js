@@ -1,5 +1,6 @@
 var express = require('express');
 var sql = require('mssql');
+var myData = require('./sampleData.js');
 
 var app = express();
 var config = {
@@ -34,11 +35,12 @@ app.get('/api/player/:id', function(req, res) {
 //    connection.on('error', function(err) {
 //        console.log("there was an error");
 //    }); 
+    
+    
     var data = [];
     
-    playerData.data.forEach(function(element, index){
-        
-        if(element.playerId == req.params.id){
+    myData.playerData.data.forEach(function(element, index){
+            if(element.PlayerID == req.params.id){
             data.push(element);
         }  
     });
@@ -52,7 +54,7 @@ app.get('/api/comments/:id', function(req, res) {
      
     var data = [];
     
-    commentLog.comments.forEach(function(element, index){
+    myData.commentLog.comments.forEach(function(element, index){
         
         if(element.playerId == req.params.id){
             data.push(element);

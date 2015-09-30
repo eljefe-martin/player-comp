@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/styles.css">    
 </head>
 <body>
-
 <nav class="navbar navbar-inverse no-bottom-margin">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,10 +23,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active"><a ui-sref="player">Player</a></li>
-        <li ui-sref-active="active"><a ui-sref="comment">Comment Log</a></li>
+        <li style="display:none" id="comment-log-tab" ui-sref-active="active"><a ui-sref="comment">Comment Log</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</a></li>
+        <li id="comment-button" style="display:none"><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</a></li>
         <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
@@ -40,7 +39,6 @@
     <script src="vendor/angular-resource.js"></script>
     <script src="vendor/angular-ui-router.js"></script>
     <script src="js/script.min.js"></script>
-    <script src="sampleData.js"></script>
 </body>
 </html>
 

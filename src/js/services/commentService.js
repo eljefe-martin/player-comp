@@ -5,13 +5,12 @@ services.factory('commentService', ['$http', function($http){
     var obj = {};
     
     //private fields used to retain state
-    var _playerId, _commentLog, _startDate, _endDate;
+    var _playerId, _commentLog;
     
-    obj.loadCommentLog = function(playerId, startDate, endDate){
+    obj.loadCommentLog = function(playerId){
         
         _playerId = playerId;
-        _startDate = startDate;
-        _endDate = endDate;
+      
         return $http.get('/api/comments/' + playerId);
 //          
     };
@@ -29,14 +28,7 @@ services.factory('commentService', ['$http', function($http){
         return _commentLog;
     };
     
-    obj.getStartDate = function() {
-        return _startDate;
-    };
-    
-    obj.getEndDate = function() {
-        return _endDate;
-    };
-    
+       
     // return the factory object
     return obj;
     

@@ -45,8 +45,14 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
         $scope.updatePressed = true;
         playerService.loadPlayerInfo($scope.playerId, $scope.startDate, $scope.endDate)
             .success(function(res){
-                $scope.playerInfo = res[0][0];
+                //change back to this when using sql server
+                //$scope.playerInfo = res[0][0];
+                $scope.playerInfo = res[0];
                 $scope.updatePressed = false;
+            
+                //show the comment tab
+                $("#comment-log-tab").show();
+                $("#comment-button").show();
                 playerService.setPlayerInfo($scope.playerInfo);
                 
             })

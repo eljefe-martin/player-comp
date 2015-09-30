@@ -5,11 +5,9 @@ controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','play
   
     //contoller function that maps to the service function                                      
     $scope.getCommentLog = function(){
-        $scope.updatePressed = true;
-        commentService.loadCommentLog($scope.playerId, $scope.startDate, $scope.endDate)
+       commentService.loadCommentLog($scope.playerId)
             .success(function(res){
                 $scope.commentLog = res;
-                $scope.updatePressed = false;
                 commentService.setCommentLog($scope.commentLog);
                 
             })
@@ -18,30 +16,17 @@ controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','play
             });
     };
                                           
-    //update date when users selects from the select box
-    $scope.updateDates = function() {
-        
-        $scope.startDate = dateUtility.addDays(dt, -$scope.dateOptions.selectedOption.id+1);
-        
-        $scope.endDate = dt;
-        
-    };
-                                          
+                                           
     var init = function(){
         //initialization function used to grab state when page reloads
-        if(commentService.getCommentLog()){
+        if(commentService.getPlayerId()){
             $scope.playerId = commentService.getPlayerId();
             $scope.commentLog = commentService.getCommentLog();
-            $scope.startDate = commentService.getStartDate();
-            $scope.endDate = commentService.getEndDate();
-            $scope.dateOptions.selectedOption = {id: dateUtility.dayDiff($scope.startDate, $scope.endDate)+1};
-            console.log($scope.dateOptions.selectedOption.id);
+      
         } else {
             $scope.playerId = playerService.getPlayerId();
-            $scope.startDate = playerService.getStartDate();
-            $scope.endDate = playerService.getEndDate();
-            
             $scope.getCommentLog();
+    
             
         }
         
@@ -49,7 +34,8 @@ controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','play
                                           
     //call init                                      
     init();
-                                      
+    $scope.myFunction = function(){alert(playerService.getPlayerId())};
+    $scope.playerInfo = playerService.getPlayerInfo();
                   
 
 }]);
