@@ -15,6 +15,13 @@ services.factory('commentService', ['$http', function($http){
 //          
     };
     
+    
+    obj.logComment = function(data) {
+    
+        return $http.post('/api/log-comment',data);
+    
+    };
+    
     //getters and setters
      obj.getPlayerId = function() {
         return _playerId;

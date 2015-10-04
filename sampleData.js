@@ -3,13 +3,13 @@
 exports.commentLog = 
             {
                 comments:[
-                    {playerId:123, UserName: "Jeff", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:123, UserName: "Bekah", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:123, UserName: "Alexis", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:123, UserName: "Hailey", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:456, UserName: "Hannah", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:456, UserName: "Lily", comment:"This is a test comment", DateID: new Date()},
-                    {playerId:456, UserName: "Bekah", comment:"This is a test comment", DateID: new Date()},
+                    {playerId:123, userName: "Jeff", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:123, userName: "Bekah", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:123, userName: "Alexis", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:123, userName: "Hailey", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:456, userName: "Hannah", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:456, userName: "Lily", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:456, userName: "Bekah", comment:"This is a test comment", dateId: new Date()},
                 ]
             };
 
@@ -102,7 +102,7 @@ Name:"JANE DOE",
 Status:"Star",
 PointBal:"69,996",
 PointBalVal:69,
-Slot_CI:"1,193",
+Slot_CI:"12,193",
 Slot_JP:0,
 Slot_Act:-43,
 Slot_Theo:54,

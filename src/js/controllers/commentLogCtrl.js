@@ -1,11 +1,7 @@
 'use strict';
 
-controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','playerService','dateUtility', 
+controllers.controller('commentLogCtrl', ['$scope', '$http', 'commentService','playerService','dateUtility', 
                                       function($scope, $http, commentService, playerService, dateUtility){
-                                          
-                                          
-    //base contoller scope object to organize things
-    $scope.comment = {};                                      
   
     //contoller function that maps to the service function                                      
     $scope.getCommentLog = function(){
@@ -20,8 +16,29 @@ controllers.controller('commentCtrl', ['$scope', '$http', 'commentService','play
             });
     };
                                           
+                                                                            
+    $scope.logComment = function(){
+        
+        //if commentData.playerId is undefined run init
+        if(!$scope.commentData.playerId) {
+            init();
+        };
+        
+        commentService.logComment($scope.commentData)
+            .success(function(res){
+                console.log(res);
+                $scope.commentData.comment = "";
+                $scope.getCommentLog();
+                alert("success log-comment");
+            
+            })
+            .error(function(res){
+                alert("error log-comment");
+            
+            });
+        
+    };
    
-                                          
     $scope.playerInfo = playerService.getPlayerInfo();
                                               
     //variable to hold commentData

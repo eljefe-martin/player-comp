@@ -1,5 +1,6 @@
 var express = require('express');
 var sql = require('mssql');
+var bodyParser = require('body-parser');
 var myData = require('./sampleData.js');
 
 var app = express();
@@ -14,7 +15,9 @@ var config = {
     }
 };
 
+//middleware
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 //routes
 app.get('/api/player/:id', function(req, res) {
@@ -66,7 +69,25 @@ app.get('/api/comments/:id', function(req, res) {
 });   
 
 
-   
+app.post('/api/log-comment', function(req, res) {
+
+    var _playerId = req.body.playerId;
+    var _comment = req.body.comment;
+    
+    //stored proc code will go here 
+    
+    //temporary sample data
+    var _json = {};
+        _json.playerId = _playerId;
+        _json.userName = "Jeff Martin";
+        _json.comment = _comment;
+        _json.dateId = new Date();
+
+    myData.commentLog.comments.push(_json);
+    console.log(myData.commentLog.comments.length);
+    res.send(_playerId + " - " + _comment);
+
+});   
 
 
 
