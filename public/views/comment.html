@@ -2,10 +2,12 @@
 <!--Player Info-->
     <div class="well well-sm no-top-margin border-radius-4px">
         <div class="row">
-            <div class="col-xs-5 col-sm-3"><h5>{{playerInfo.Name}}</h5> </div>
-            <div class="col-xs-5 col-sm-3"><h5><label class="right-padding">Status:</label>{{playerInfo.Status}}</h5></div>
+            <div class="col-xs-4 col-sm-3"><h5>{{playerInfo.Name}}</h5> </div>
+            <div class="col-xs-4 col-sm-3"><h5><label class="right-padding">Status:</label>{{playerInfo.Status}}</h5></div>
+            <div class="col-xs-4 col-sm-6"><button style="float: right" id="comment-refresh-button" data-ng-click="getPlayerInfo()" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-refresh right-padding"></span>Refresh</button></div>
+
         </div>
-      
+
     </div>
     
 <div class="container-fluid">
