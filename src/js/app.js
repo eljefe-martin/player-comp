@@ -15,9 +15,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                 templateUrl: 'views/player.html',
                 controller: 'playerCtrl'
             },
-            "log-comment" : {
-                templateUrl: 'views/log-comment.html',
-                controller: 'commentCtrl'
+            "post-comment" : {
+                templateUrl: 'views/post-comment.html',
+                controller: 'postCommentCtrl'
             }
         }
       })
@@ -28,24 +28,25 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                 templateUrl: 'views/comment.html',
                 controller: 'commentCtrl'
             },
-            "log-comment" : {
-                templateUrl: 'views/log-comment.html',
-                controller: 'commentCtrl'
+            "post-comment" : {
+                templateUrl: 'views/post-comment.html',
+                controller: 'postCommentCtrl'
             }
         }
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'views/login.html'
+        templateUrl: 'views/login.html',
+        controller: 'userSessionCtrl'
       });
     $urlRouterProvider.otherwise('login');
   }])
   .run(['$rootScope', '$state', function($rootScope, $state) {
-    $rootScope.$on('$stateChangeStart', function(event, next) {
+    $rootScope.$on('$stateChangeStart', function(event, toState) {
       // redirect to login page if not logged in
-      if (next.authenticate && !$rootScope.currentUser) {
+      if (toState.name !== 'login' && !$rootScope.currentUser) {
         event.preventDefault(); //prevent current page from loading
-        $state.go('forbidden');
+        $state.go('login');
       }
     });
   }]);

@@ -53,6 +53,7 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
                 //show the comment tab
                 $("#comment-log-tab").show();
                 $("#comment-button").show();
+                $('#player-update-button').blur();
                 playerService.setPlayerInfo($scope.playerInfo);
                 
             })

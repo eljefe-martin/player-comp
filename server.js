@@ -69,23 +69,21 @@ app.get('/api/comments/:id', function(req, res) {
 });   
 
 
-app.post('/api/log-comment', function(req, res) {
+app.post('/api/post-comment', function(req, res) {
 
-    var _playerId = req.body.playerId;
-    var _comment = req.body.comment;
-    
     //stored proc code will go here 
     
     //temporary sample data
-    var _json = {};
-        _json.playerId = _playerId;
-        _json.userName = "Jeff Martin";
-        _json.comment = _comment;
-        _json.dateId = new Date();
-
+    var _json = {
+        playerId: req.body.playerId,
+        comment: req.body.comment,
+        userName: req.body.userId,
+        dateId: new Date()
+    };
+    
     myData.commentLog.comments.push(_json);
     console.log(myData.commentLog.comments.length);
-    res.send(_playerId + " - " + _comment);
+    res.send("success");
 
 });   
 
@@ -95,21 +93,30 @@ app.post('/api/login', function(req, res) {
 
     //need to add body parser to receive the json from the angular call
     
-    var connection =  new sql.Connection(config, function(err) {
+    //varuable to hold return value of procedure
+    
+    var sessionInfo = {
+        userId: req.body.userId,
+        accessLevel: 0,
+        isUser: false,
+        validPassword: false,
+    };
+    
 
-        var request = new sql.Request(connection);
-
-        request.input('PlayerId', sql.Int, req.params.id);
-        request.execute('dbo.usp_TomTest', function(err, recordsets) {
-            res.send(recordsets);
-        });   
-
-
+    myData.loginData.users.forEach(function(element){
+        if(element.userId === sessionInfo.userId) {
+            //found user check password
+            sessionInfo.isUser = true;
+            if(element.password === req.body.password){
+                //if password matches proceed
+                sessionInfo.accessLevel = element.accessLevel;
+                sessionInfo.validPassword = true;
+            }
+        }        
     });
     
-    connection.on('error', function(err) {
-        console.log("there was an error");
-    });    
+    res.send(sessionInfo);
+   
 });
 
 

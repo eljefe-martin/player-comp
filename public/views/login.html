@@ -3,9 +3,12 @@
         
         <form class="center" data-ng-submit="login()">
             <h2 class="form-signin-heading">Please sign in</h2>
-            <input type="text" id="userID" class="form-control" placeholder="User ID" required autofocus>
+            <input type="text" id="userID" class="form-control" placeholder="User ID" required autofocus data-ng-model="loginData.userId">
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required data-ng-model="loginData.password">
+            <div data-ng-show="loginData.invalidLogin" class="alert alert-danger no-bottom-margin" >
+                <strong>Invaild credentials!</strong> Please re-enter your User ID and Password.
+            </div>            
             <button class="btn btn-block inverse-background inverse-text" type="submit">Sign in</button>
         </form>
 

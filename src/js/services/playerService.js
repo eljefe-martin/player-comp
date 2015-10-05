@@ -37,6 +37,12 @@ services.factory('playerService', ['$http', function($http){
         return _endDate;
     };
     
+    obj.resetPlayerInfo = function(){
+        _playerId = undefined;
+        _startDate = undefined;
+        _playerInfo = undefined;
+        _endDate = undefined;
+    };
     
     // return the factory object
     return obj;

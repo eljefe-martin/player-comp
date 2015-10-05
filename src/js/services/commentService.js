@@ -16,10 +16,8 @@ services.factory('commentService', ['$http', function($http){
     };
     
     
-    obj.logComment = function(data) {
-    
-        return $http.post('/api/log-comment',data);
-    
+    obj.postComment = function(data) {
+        return $http.post('/api/post-comment',data);
     };
     
     //getters and setters

@@ -166,3 +166,11 @@ StartDate:"2015-09-01",
 EndDate:"2015-09-30",
 Days:29
 }]};
+
+exports.loginData = {
+    users:[
+        {userId: "jeff", password: "jeff", accessLevel: 1},
+        {userId: "bekah", password: "bekah", accessLevel: 1},
+        {userId: "lily", password: "lily", accessLevel: 0},
+    ]
+};
