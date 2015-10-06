@@ -11,6 +11,21 @@
     </div>
     
 <div class="container-fluid">
+    <table class="table">
+        <thead>
+            <th>Comment</th>   
+            <th>Date</th>   
+            <th>Comment Author</th>   
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="comment in commentLog">
+                <td>{{comment.comment}}</td>
+                <td>{{comment.dateId}}</td>
+                <td>{{comment.userName}}</td>
+            </tr>
+        </tbody>
+    
+    </table>
   <div id="comment-log" class="row">
       {{commentLog}}
     </div>

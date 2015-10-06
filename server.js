@@ -77,7 +77,7 @@ app.post('/api/post-comment', function(req, res) {
     var _json = {
         playerId: req.body.playerId,
         comment: req.body.comment,
-        userName: req.body.userId,
+        userName: req.body.userName,
         dateId: new Date()
     };
     
