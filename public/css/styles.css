@@ -40,6 +40,14 @@
   text-align: right;
 }
 
+.bottom-margin-5 {
+  margin-bottom: 5px;
+}
+
+.top-margin-5 {
+  margin-top: 5px;
+}
+
 .top-margin-15 {
   margin-top: 15px;
 }
