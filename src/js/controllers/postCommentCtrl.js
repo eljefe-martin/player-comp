@@ -3,11 +3,20 @@
 controllers.controller('postCommentCtrl', ['$scope', '$rootScope','$http', 'commentService','playerService','dateUtility', 
                                       function($scope, $rootScope, $http, commentService, playerService, dateUtility){
   
-    //main scope object to namespace everything
-    $scope.postComment = {};
+                                             
+    $scope.getCommentLog = function(){
+       commentService.loadCommentLog($scope.playerId)
+            .success(function(res){
+                commentService.setCommentLog(res);
+                
+            })
+            .error(function(res){
+                console.log(res);
+            });
+    };
                                           
-                                              
-    $scope.postComment.postComment = function(){
+                                          
+    $scope.postComment = function(){
         
         //if commentData.playerId is undefined run init
         if(!$scope.commentData.playerId) {
@@ -26,7 +35,7 @@ controllers.controller('postCommentCtrl', ['$scope', '$rootScope','$http', 'comm
     };
    
     //                                      
-    $scope.postComment.playerInfo = playerService.getPlayerInfo();
+    $scope.playerInfo = playerService.getPlayerInfo();
                                               
     //variable to hold commentData
                                           
