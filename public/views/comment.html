@@ -15,13 +15,15 @@
         <thead>
             <th>Comment</th>   
             <th>Date</th>   
-            <th>Comment Author</th>   
+            <th>Comment Author</th>
+            <th>CommendID</th>
         </thead>
         <tbody>
             <tr data-ng-repeat="comment in commentLog">
                 <td>{{comment.comment}}</td>
                 <td>{{comment.dateId}}</td>
                 <td>{{comment.userName}}</td>
+                <td>{{comment.commentId}}</td>
             </tr>
         </tbody>
     

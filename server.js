@@ -82,8 +82,9 @@ app.post('/api/post-comment', function(req, res) {
     };
     
     myData.commentLog.comments.push(_json);
-    console.log(myData.commentLog.comments.length);
-    res.send("success");
+
+    //handle output parm in stored proc
+    res.send({commentId:"1uniqeId"});
 
 });   
 

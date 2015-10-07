@@ -25,8 +25,8 @@ controllers.controller('postCommentCtrl', ['$scope', '$rootScope','$http', 'comm
 
         commentService.postComment($scope.commentData)
             .success(function(res){
-                console.log(res);
-                console.log("posted");
+                //return the comment Id to the user
+                alert("Comment ID: " + res.commentId);
                 $scope.commentData.comment = "";
             })
             .error(function(res){

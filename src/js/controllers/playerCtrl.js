@@ -26,10 +26,10 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
             $scope.dateOptions.selectedOption = {id: dateUtility.dayDiff($scope.startDate, $scope.endDate)+1};
             console.log($scope.dateOptions.selectedOption.id);
         } else {
-            $scope.dateOptions.selectedOption = {id:180};
+            $scope.dateOptions.selectedOption = {id:90};
             $scope.playerId;
             $scope.playerInfo;
-            $scope.startDate = dateUtility.addDays(dt, $scope.dateOptions.selectedOption.id - 1);                                  ;
+            $scope.startDate = dateUtility.addDays(dt, -$scope.dateOptions.selectedOption.id+1);                                  ;
             $scope.endDate = dt;
           
         }

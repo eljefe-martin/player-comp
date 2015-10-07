@@ -3,13 +3,13 @@
 exports.commentLog = 
             {
                 comments:[
-                    {playerId:123, userName: "Jeff", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:123, userName: "Bekah", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:123, userName: "Alexis", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:123, userName: "Hailey", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:456, userName: "Hannah", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:456, userName: "Lily", comment:"This is a test comment", dateId: new Date()},
-                    {playerId:456, userName: "Bekah", comment:"This is a test comment", dateId: new Date()},
+                    {playerId:123, userName: "Jeff", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:123, userName: "Bekah", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:123, userName: "Alexis", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:123, userName: "Hailey", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:456, userName: "Hannah", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:456, userName: "Lily", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
+                    {playerId:456, userName: "Bekah", comment:"This is a test comment", dateId: new Date(), commentId: "1z5b"},
                 ]
             };
 
