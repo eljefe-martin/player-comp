@@ -21,7 +21,7 @@
         <tbody>
             <tr data-ng-repeat="comment in commentLog">
                 <td>{{comment.Comment}}</td>
-                <td>{{comment.DateID}}</td>
+                <td>{{comment.DateID | date : 'medium'}}</td>
                 <td>{{comment.UserName}}</td>
                 <td>{{comment.LookupID}}</td>
             </tr>
