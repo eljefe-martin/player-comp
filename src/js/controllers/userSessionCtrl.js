@@ -17,7 +17,7 @@ controllers.controller('userSessionCtrl', ['$scope', '$rootScope','$state', 'use
             userSessionService.login($scope.loginData)
                 .success(function(res){
                     //verify access level and valid login
-                    if(res.isUser && res.validPassword && res.accessLevel != 0){
+                    if(res.changePassword == 0 && res.accessLevel != 0){
                         $rootScope.currentUser = res.userId;
                         $rootScope.accessLevel = res.accessLevel;
                         $state.go('player');
