@@ -21,12 +21,13 @@ controllers.controller('postCommentCtrl', ['$scope', '$rootScope','$http', 'comm
         //if commentData.playerId is undefined run init
         if(!$scope.commentData.playerId) {
            $scope.commentData.playerId = playerService.getPlayerId();
+           $scope.commentData.playerInfo = playerService.getPlayerInfo();        
         };
 
         commentService.postComment($scope.commentData)
             .success(function(res){
                 //return the comment Id to the user
-                alert("Comment ID: " + res.commentId);
+                alert("Comment ID: " + res.LookupID);
                 $scope.commentData.comment = "";
             })
             .error(function(res){
@@ -41,7 +42,8 @@ controllers.controller('postCommentCtrl', ['$scope', '$rootScope','$http', 'comm
                                           
     $scope.commentData = {
         playerId: playerService.getPlayerId(),
-        userName: $rootScope.currentUser
+        userName: $rootScope.currentUser,
+        playerInfo: $scope.playerInfo
         
     };
     

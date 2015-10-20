@@ -86,20 +86,71 @@ app.get('/api/comments/:id', function(req, res) {
 
 app.post('/api/post-comment', function(req, res) {
 
-    //stored proc code will go here 
+      
+    var connection =  new sql.Connection(config, function(err) {
+      
+        //add some error handling here
+        if(err){
+            console.log(err);
+            return;
+        }
+          
+    //set up the request   
+    var request = new sql.Request(connection);
+       request.input('PlayerId', req.body.playerInfo.PlayerID);
+       request.input('Slot_Act', req.body.playerInfo.Slot_Act);
+       request.input('Slot_Theo', req.body.playerInfo.Slot_Theo);
+       request.input('Table_Act', req.body.playerInfo.Table_Act);
+       request.input('Table_Theo', req.body.playerInfo.Table_Theo);
+       request.input('FreePlayPromo', req.body.playerInfo.Slots_FreePlayPromo);
+       request.input('FreePlayPoints', req.body.playerInfo.Gaming_PointComp);
+       request.input('FreePlayDraw', req.body.playerInfo.Slots_FreePlayDrawing);
+       request.input('Points', req.body.playerInfo.Total_PtsCost);
+       request.input('PointAvailable', req.body.playerInfo.PointBal);
+       request.input('Comps', req.body.playerInfo.CompIssued);
+       request.input('PatronCoupons', req.body.playerInfo.PatronCoupons);
+       request.input('Kiosk', req.body.playerInfo.KioskCoupons);
+       request.input('TheoMin', req.body.playerInfo.Comp_MinNoFSP);
+       request.input('TheoMid', req.body.playerInfo.Comp_MidNoFSP);
+       request.input('TheoMax', req.body.playerInfo.Comp_MaxNoFSP);
+       request.input('ActMin', req.body.playerInfo.Comp_MinAct);
+       request.input('ActMid', req.body.playerInfo.Comp_MidAct);
+       request.input('ActMax', req.body.playerInfo.Comp_MaxAct);
+       request.input('StartDate', sql.DateTime, new Date(req.body.playerInfo.StartDate + 'T00:00:00'));
+       request.input('EndDate', sql.DateTime, new Date(req.body.playerInfo.EndDate + 'T00:00:00'));
+       request.input('Days', sql.NVarChar, req.body.playerInfo.Days);
+       request.input('UserName', req.body.userName);
+       request.input('Comment', req.body.comment);
+       request.execute('dbo.asp_CompLookupLog', function(err, rs) {
+        
+           if(err){
+                console.log(err);
+                return;
+           }
+           
+            //inner request
+            var request2 = new sql.Request(connection);
+            request2.input('PlayerID', req.body.playerInfo.PlayerID)
+            request2.execute('dbo.asp_CompLookupLogID', function(err2, rs2) {
+                if(err2)  {
+                    console.log(err);
+                    return;
+                }
+                    //send the lookupID back
+                    res.send(rs2[0][0])
+                    
+            });
+          
+        });   
+ 
+        connection.on('error', function(err) {
+            console.log("there was an error");
+        }); 
+    });
     
-    //temporary sample data
-    var _json = {
-        playerId: req.body.playerId,
-        comment: req.body.comment,
-        userName: req.body.userName,
-        dateId: new Date()
-    };
-    
-    myData.commentLog.comments.push(_json);
-
+  
     //handle output parm in stored proc
-    res.send({commentId:"1uniqeId"});
+    //res.send({commentId:"1uniqeId"});
 
 });   
 
