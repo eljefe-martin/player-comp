@@ -2,7 +2,8 @@
  <div class="well well-sm no-bottom-margin no-top-margin"><form class="form-inline" role="form">
   <div class="form-group">
     <label for="player">Player:</label>
-    <input data-ng-model="playerId" type="text" class="form-control" id="player" value="{{playerId}}">
+    <input data-ng-model="playerId" type="text" class="form-control" id="player" style="width:100px; margin-right:5px" value="{{playerId}}">
+   <a data-ng-click="myfun()" data-toggle="modal" data-target="#player-lookup" style="margin-right:5px"><span class="glyphicon glyphicon-search"></span></a>
   </div>
   <div class="form-group">
     <label for="days">Days:</label>
@@ -160,7 +161,7 @@
         <div class="well well-sm background-transparent">
         <h4><u>Comp Summary</u></h4>
       <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Entertain</span><span style="float:right">{{playerInfo.Comp_Concert}}</span></div>
+                <div class="col-sm-12 col-xs-6"><span>Entertain</span><span style="float:right" >{{playerInfo.Comp_Concert}}</span></div>
             </div>  <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>FNB</span><span style="float:right">{{playerInfo.Comp_FNB}}</span></div>
             </div>  <div class="row">
@@ -174,7 +175,7 @@
             </div><div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Spa</span><span style="float:right">{{playerInfo.Comp_Spa}}</span></div>
             </div>  <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right">{{playerInfo.Comp_Total}}</span></div>
+                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right" class ="{{playerInfo.Comp_Total_Class1}}">{{playerInfo.Comp_Total}}</span></div>
             </div>
         </div>
         <div class="well well-sm top-margin-15">
@@ -230,4 +231,7 @@
     </div>
   
 </div>
+    
+ <div ui-view="player-lookup"></div>    
+    
 </section>

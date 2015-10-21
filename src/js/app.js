@@ -18,6 +18,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
             "post-comment" : {
                 templateUrl: 'views/post-comment.html',
                 controller: 'postCommentCtrl'
+            },
+            "player-lookup@player" : {
+                templateUrl: 'views/player-lookup.html'
             }
         }
       })

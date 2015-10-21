@@ -5,6 +5,8 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
     var dt = new Date();
     dt.setDate(dt.getDate()-1);
     
+                                         
+                                          
     //date dropdown options
     $scope.dateOptions = {
         availableOptions: [
@@ -69,7 +71,15 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
         
         $scope.endDate = dt;
         
-    };                                      
+    };     
+                                          
+    $scope.myfun = function() {
+        
+         //configure data table
+        $('#playerLookupTable').DataTable();  
+        
+    };   
+                                          
 
 }]);
 
