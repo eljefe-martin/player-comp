@@ -9,6 +9,7 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
     $scope.dateOptions = {
         availableOptions: [
             {id:7},
+            {id:30},
             {id:90},
             {id:180},
             {id:365}
