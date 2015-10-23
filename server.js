@@ -88,6 +88,21 @@ app.post('/api/post-comment', function(req, res) {
 
 });   
 
+app.post('/api/player-lookup', function(req, res) {
+
+    //need to add body parser to receive the json from the angular call
+    
+    var playerInfo = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthdate: req.body.birthdate
+    };
+    
+    console.log(playerInfo);
+    
+    res.send(myData.playerLookupData.players);
+   
+});
 
 
 app.post('/api/login', function(req, res) {

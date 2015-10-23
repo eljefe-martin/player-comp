@@ -67,6 +67,7 @@ Comp_MidNoKiosk:8,
 Comp_MinNoKiosk:7,
 CompIssued:0,
 Comp_Total:0,
+Comp_Total_Class: "redFont",
 PatronCoupons:0,
 KioskCoupons:0,
 Total_Coupons:0,
@@ -142,6 +143,7 @@ Comp_MidNoKiosk:8,
 Comp_MinNoKiosk:7,
 CompIssued:0,
 Comp_Total:0,
+Comp_Total: "redFont",
 PatronCoupons:0,
 KioskCoupons:0,
 Total_Coupons:0,
@@ -172,5 +174,14 @@ exports.loginData = {
         {userId: "jeff", password: "jeff", accessLevel: 1},
         {userId: "bekah", password: "bekah", accessLevel: 1},
         {userId: "lily", password: "lily", accessLevel: 0},
+    ]
+};
+
+exports.playerLookupData = {
+    players:[
+        {PlayerID: 456, FirstName: "John", LastName: "Dough", AgeRange: "35-45", 
+         City: "Henderson", State: "NV", RankDesc: "Something", Birthday: new Date('01/30/1965')},
+        {PlayerID: 123, FirstName: "Sue", LastName: "Shoe", AgeRange: "35-45", 
+         City: "Henderson", State: "NV", RankDesc: "Something", Birthday: new Date('05/01/1933')}
     ]
 };
