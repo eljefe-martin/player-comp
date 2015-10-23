@@ -176,3 +176,12 @@ exports.loginData = {
         {userId: "lily", password: "lily", accessLevel: 0},
     ]
 };
+
+exports.playerLookupData = {
+    players:[
+        {PlayerID: 456, FirstName: "John", LastName: "Dough", AgeRange: "35-45", 
+         City: "Henderson", State: "NV", RankDesc: "Something", Birthday: new Date('01/30/1965')},
+        {PlayerID: 123, FirstName: "Sue", LastName: "Shoe", AgeRange: "35-45", 
+         City: "Henderson", State: "NV", RankDesc: "Something", Birthday: new Date('05/01/1933')}
+    ]
+};

@@ -67,3 +67,15 @@
 .hide {
   display: none;
 }
+
+@media (min-width: 768px) {
+  .form-control.player-lookup-input {
+    width: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog.player-lookup {
+    width: 720px;
+  }
+}

@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div id="player-lookup" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog player-lookup">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -9,8 +9,29 @@
         <h4 class="modal-title">Player Lookup</h4>
       </div>
       <div class="modal-body">
-        
-        <table class='table' id="playerLookupTable">
+          
+<!--        form elements      -->
+<div class="well well-sm">
+     <form class="form-inline" role="form">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+<!--    <input  data-ng-model="firstName" type="text" class="form-control player-lookup-input" id="firstName" value="{{firstName}}">-->
+    <input  data-ng-model="firstName" type="text" class="form-control player-lookup-input" id="firstName" value="{{playerModel.playerId}}">
+   </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input data-ng-model="lastName" type="text" class="form-control player-lookup-input" id="lastName" value="{{lastName}}">
+   </div>
+  <div class="form-group">
+    <label for="birthdate">Birthdate:</label>
+      <input style="width:140px"  type="date" id="birthdate" data-ng-model="birthdate" value="">
+  </div>    
+  <button id="playerLookupButton" data-ng-click="playerSearch()" type="submit" class="btn btn-default">Search</button>
+</form>
+</div>
+<!--results-->
+        <div ng-show="playerLookupResults"  class="well well-sm">  
+        <table id="playerLookupTable" class='table'>
             <thead><th>Selected</th><th>Col1</th><th>Col2</th></thead>
             <tbody>
                 <tr>
@@ -24,14 +45,12 @@
                 </tr>
             </tbody>
         </table>
-            
+          </div>   
          
      
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button data-ng-click="" type="submit" class="btn btn-default" data-dismiss="modal">Search</button>
-        </div>
-       
+        <button type="button" data-ng-click="updatePlayerId()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
              
       </div>
     </div>

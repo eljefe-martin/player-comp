@@ -66,3 +66,19 @@
 .hide {
     display: none;
 }
+
+//player-lookup formats
+.form-control.player-lookup-input {
+    @media (min-width: 768px)  {
+        width: 100px;
+    }
+}
+
+.modal-dialog.player-lookup {
+    @media (min-width: 768px) {
+        width: 720px;
+    }
+}
+
+
+
