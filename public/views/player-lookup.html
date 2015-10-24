@@ -30,22 +30,35 @@
 </form>
 </div>
 <!--results-->
+          <div class="container-fluid">
         <div ng-show="playerLookupResults"  class="well well-sm">  
-        <table id="playerLookupTable" class='table'>
-            <thead><th>Selected</th><th>Col1</th><th>Col2</th></thead>
+        <table id="playerLookupTable" class='table' data-repeat-complete-listener-dir>
+            <thead>
+                <th>Choose Player</th>
+                <th>Player Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age Range</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Rank</th>
+                <th>Birthdate</th>
+            </thead>
             <tbody>
-                <tr>
-                    <td><input type="checkbox"/></td><td>Dog</td><td>100</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td><td>Cat</td><td>20</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td><td>Bird</td><td>3100</td>
+                <tr data-ng-repeat="result in lookupResults" data-repeat-complete-dir>
+                    <td><input type="checkbox"/></td>
+                    <td>{{result.PlayerID}}</td>
+                    <td>{{result.FirstName}}</td>
+                    <td>{{result.LastName}}</td>
+                    <td>{{result.AgeRange}}</td>
+                    <td>{{result.City}}</td>
+                    <td>{{result.State}}</td>
+                    <td>{{result.RankDesc}}</td>
+                    <td>{{result.Birthday | date : 'MMM-d-yyyy'}}</td>
                 </tr>
             </tbody>
         </table>
-          </div>   
+              </div>  </div> 
          
      
       <div class="modal-footer">

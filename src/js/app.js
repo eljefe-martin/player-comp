@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app',['app.controllers','app.services','ui.router']);
+var app = angular.module('app',['app.controllers','app.services', 'app.directives','ui.router']);
 
 
 //states

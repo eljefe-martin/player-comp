@@ -20,13 +20,9 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
             $http.post('/api/player-lookup', data)
                 .success( function(res){
                     
-                    console.log(res);
-                    //need to populate data for table ng-repeat
+                    $scope.lookupResults = res;
                     $scope.playerLookupResults = true;
-                    $('#playerLookupTable').DataTable(); 
-                    $('#playerLookupTable input:checkbox').change( function() {
-                        $scope.selectedPlayerId = $(this.parentNode).next().text();
-                    });
+                   
        
                 })
                 .error( function(res){
@@ -50,5 +46,12 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
             
         }
     };                                      
-
+       
+    $scope.formatTable = function() {
+        //called from directive so we know table is fully loaded
+        $('#playerLookupTable').DataTable(); 
+        $('#playerLookupTable input:checkbox').change( function() {
+            $scope.selectedPlayerId = $(this.parentNode).next().text();
+        });
+    };                                      
 }]);

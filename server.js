@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 //routes
-app.get('/api/player/:id', function(req, res) {
+app.post('/api/player', function(req, res) {
 
 //    var connection =  new sql.Connection(config, function(err) {
         
@@ -43,7 +43,7 @@ app.get('/api/player/:id', function(req, res) {
     var data = [];
     
     myData.playerData.data.forEach(function(element, index){
-            if(element.PlayerID == req.params.id){
+            if(element.PlayerID == parseInt(req.body.playerId)){
             data.push(element);
         }  
     });
@@ -115,7 +115,7 @@ app.post('/api/login', function(req, res) {
         userId: req.body.userId,
         accessLevel: 0,
         isUser: false,
-        validPassword: false,
+        changePassword: 1,
     };
     
 
@@ -126,7 +126,7 @@ app.post('/api/login', function(req, res) {
             if(element.password === req.body.password){
                 //if password matches proceed
                 sessionInfo.accessLevel = element.accessLevel;
-                sessionInfo.validPassword = true;
+                sessionInfo.changePassword = 0;
             }
         }        
     });

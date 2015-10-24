@@ -60,6 +60,8 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
                 if(!$scope.playerInfo){
                     $scope.playerModel.hasData = false;
                     $scope.playerModel.showPlayerData = false;
+                    $("#comment-log-tab").hide();
+                    $("#comment-button").hide();
                 } else {
                     //show the comment tab
                     $scope.playerModel.hasData = true;
