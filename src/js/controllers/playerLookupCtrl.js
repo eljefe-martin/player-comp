@@ -5,8 +5,7 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
                                           
                         
     $scope.playerLookupResults = false;
-    $scope.selectedPlayerId;
-                                          
+                                  
                       
     //FUNCTIONS                                 
     
@@ -22,6 +21,7 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
                     
                     $scope.lookupResults = res;
                     $scope.playerLookupResults = true;
+                    $scope.formatTable(res);
                    
        
                 })
@@ -36,22 +36,56 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
         }
     };
     
-    //update playerid in player form                                      
-    $scope.updatePlayerId = function(){
-        if($scope.selectedPlayerId) {
-            $scope.playerModel.playerId = $scope.selectedPlayerId;
-            $scope.playerModel.showPlayerData = false;
+    $scope.cancelLookup = function() {
+        clearTableResults();
+    };                         
+      
+    var clearTableResults = function() {
             $scope.playerLookupResults = false;
             $scope.firstName = $scope.lastName = $scope.birthdate = undefined;
-            
-        }
+            var t = $('#playerLookupTable').DataTable();
+                t.clear();
+                t.destroy();                                      
     };                                      
-       
-    $scope.formatTable = function() {
+                                          
+    $scope.formatTable = function(data) {
         //called from directive so we know table is fully loaded
-        $('#playerLookupTable').DataTable(); 
-        $('#playerLookupTable input:checkbox').change( function() {
-            $scope.selectedPlayerId = $(this.parentNode).next().text();
-        });
+//        $('#playerLookupTable').dataTable().fnAddData(data); 
+      var table = $('#playerLookupTable').DataTable({
+        data: data,
+        columns: [
+            { data: 'PlayerID' },
+            { data: 'FirstName' },
+            { data: 'LastName' },
+            { data: 'AgeRange' },
+            { data: 'City' },
+            { data: 'State' },
+            { data: 'RankDesc' },
+            { data: 'Birthday', 
+              render: function ( data, type, row ) {
+                // If display or filter data is requested, format the date
+                if ( type === 'display' || type === 'filter' ) {
+                    debugger
+                    var d = data.substring(0,10);
+                    d = d.substring(5,7) + '/' + d.substr(8,10) + '/' + d.substring(0,4)
+                    return d;
+                }
+ 
+              return data;
+              }
+            }
+        ]
+      });
+    
+    //add handler for selecting a row    
+    $('#playerLookupTable tbody').on( 'click', 'tr', function () {
+            $(this).toggleClass('row-highlight');
+            $scope.playerModel.playerId = parseInt($(this).children()[0].innerHTML);
+            $scope.$apply($scope.playerModel.playerId);
+            clearTableResults();
+            $scope.playerModel.showPlayerData = false;
+            $('#player-lookup').modal('hide');
+        } );     
+     
     };                                      
 }]);

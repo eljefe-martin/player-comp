@@ -86,6 +86,10 @@
 
 @media (min-width: 768px) {
   .modal-dialog.player-lookup {
-    width: 720px;
+    width: 745px;
   }
+}
+
+.row-highlight {
+  background-color: lightgreen;
 }

@@ -30,11 +30,12 @@
 </form>
 </div>
 <!--results-->
-          <div class="container-fluid">
+        <div class="container-fluid">
         <div ng-show="playerLookupResults"  class="well well-sm">  
-        <table id="playerLookupTable" class='table' data-repeat-complete-listener-dir>
+        <table id="playerLookupTable" class='table'>
+
             <thead>
-                <th>Choose Player</th>
+<!--                <th>Choose Player</th>-->
                 <th>Player Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -45,6 +46,7 @@
                 <th>Birthdate</th>
             </thead>
             <tbody>
+<!--
                 <tr data-ng-repeat="result in lookupResults" data-repeat-complete-dir>
                     <td><input type="checkbox"/></td>
                     <td>{{result.PlayerID}}</td>
@@ -56,13 +58,14 @@
                     <td>{{result.RankDesc}}</td>
                     <td>{{result.Birthday | date : 'MMM-d-yyyy'}}</td>
                 </tr>
+-->
             </tbody>
         </table>
               </div>  </div> 
          
      
       <div class="modal-footer">
-        <button type="button" data-ng-click="updatePlayerId()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" data-ng-click="cancelLookup()" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
              
       </div>
