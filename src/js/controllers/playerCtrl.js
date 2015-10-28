@@ -4,9 +4,20 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
                                       function($scope, $http, playerService, dateUtility){
     var dt = new Date();
     dt.setDate(dt.getDate()-1);
-    
+
+    var _playerId = undefined;                                      
+    //set up some event handlers for when data changes
+    $( "#player" )
+        .change(function() {
+                $scope.playerModel.resetPlayerInfo()
+        });
                                           
-                                          
+    $( "#days, #start-date, #end-date" )
+        .change(function(){
+            $scope.playerModel.showPlayerData = false;
+            $("#comment-log-tab").hide();
+            $("#comment-button").hide();
+        });
                                           
     //date dropdown options
     $scope.dateOptions = {
@@ -91,6 +102,17 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
         
     };     
   
+                                          
+    $scope.playerModel.resetPlayerInfo  = function() {
+            $scope.playerModel.showPlayerData = false;
+            $scope.dateOptions.selectedOption = {id:90};
+            $scope.startDate = dateUtility.addDays(dt, -$scope.dateOptions.selectedOption.id+1);                                  ;
+            $scope.endDate = dt;
+            $scope.$apply();
+            $("#comment-log-tab").hide();
+            $("#comment-button").hide();
+    
+    };                                    
      //call init                                      
     init();                                      
 

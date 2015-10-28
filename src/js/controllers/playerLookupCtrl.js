@@ -5,7 +5,20 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
                                           
                         
     $scope.playerLookupResults = false;
-                                  
+    
+                                          
+    //input events
+    $('#firstName, #lastName, #birthdate').change(function(){
+        if(this.id == "birthdate") {
+            $scope.firstName = undefined;
+            $scope.lastName = undefined;
+            $scope.$apply();
+        } else {
+            $scope.birthdate = undefined;
+            $scope.$apply();
+        } 
+        
+    });                                      
                       
     //FUNCTIONS                                 
     
@@ -51,7 +64,11 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
     $scope.formatTable = function(data) {
         //called from directive so we know table is fully loaded
 //        $('#playerLookupTable').dataTable().fnAddData(data); 
-      var table = $('#playerLookupTable').DataTable({
+      var table = $('#playerLookupTable').DataTable();
+        table.clear();
+        table.destroy();
+        table = $('#playerLookupTable').DataTable({
+        scrollX: true,
         data: data,
         columns: [
             { data: 'PlayerID' },
@@ -82,6 +99,7 @@ controllers.controller('playerLookkupCtrl', ['$scope', '$http','dateUtility',
             $(this).toggleClass('row-highlight');
             $scope.playerModel.playerId = parseInt($(this).children()[0].innerHTML);
             $scope.$apply($scope.playerModel.playerId);
+            $scope.playerModel.resetPlayerInfo();
             clearTableResults();
             $scope.playerModel.showPlayerData = false;
             $('#player-lookup').modal('hide');

@@ -35,7 +35,7 @@
     </div>
 <div ng-hide="playerModel.playerId"><div class="center"><h3>Please provide a player id.</h3></div></div>    
 <div ng-show="updatePressed"><div class="center"><h3>Loading data...</h3></div></div> 
-<div ng-hide="playerModel.hasData"><div class="center"><h3>No data available.</h3></div></div>     
+<div ng-hide="playerModel.hasData || !playerModel.playerId"><div class="center"><h3>No data available.</h3></div></div>     
 <div ng-show="playerModel.showPlayerData" class="container-fluid">
   <div class="row">
       <div class="col-sm-3">
