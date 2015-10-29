@@ -51,6 +51,58 @@ app.post('/api/player', function(req, res) {
         
 });
 
+app.post('/api/player-lookup', function(req, res) {
+
+    //need to add body parser to receive the json from the angular call
+    
+    var playerInfo = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthdate: req.body.birthdate
+    };
+    
+    if(!playerInfo.firstName) {
+        playerInfo.firstName = '';
+    }
+    if(!playerInfo.lastName) {
+        playerInfo.lastName = '';
+    }
+    if(!playerInfo.birthdate) {
+        playerInfo.birthdate = '1/1/1900';
+    }
+        
+    
+    var connection =  new sql.Connection(config, function(err) {
+      
+        //add some error handling here
+        if(err){
+            console.log(err);
+            return;
+        }
+          
+    //set up the request   
+    var request = new sql.Request(connection);
+       request.input('First', playerInfo.firstName);
+	   request.input('Last',  playerInfo.lastName);
+       request.input('Birthday',  new Date(playerInfo.birthdate));
+	   request.execute('dbo.asp_playerLookup', function(err, rs) {
+        
+           if(err){
+                console.log(err);
+                return;
+           }
+//            console.log(rs[0]);
+           res.send(rs[0]);
+              
+        });   
+ 
+        connection.on('error', function(err) {
+            console.log("there was an error");
+        }); 
+    });
+  
+});
+
 app.get('/api/comments/:id', function(req, res) {
 
    
