@@ -1,0 +1,277 @@
+<section>
+ <div class="well well-sm no-bottom-margin no-top-margin"><form class="form-inline" role="form">
+  <div class="form-group">
+    <label for="player">Player:</label>
+    <input data-ng-model="playerModel.playerId" type="text" class="form-control" id="player" style="width:100px; margin-right:5px" value="{{playerModel.playerId}}">
+   <a data-toggle="modal" data-target="#player-lookup" style="margin-right:5px"><span class="glyphicon glyphicon-search"></span></a>
+  </div>
+  <div class="form-group">
+    <label for="days">Days:</label>
+  <select name="days" class="form-control" id="days" data-ng-model="dateOptions.selectedOption" data-ng-change="updateDates()" 
+          data-ng-options="option.id for option in dateOptions.availableOptions track by option.id">
+  </select>
+</div>
+
+  <div class="form-group">
+    <label for="start-date">Start:</label>
+      <input style="width:140px" type="date" id="start-date" data-ng-model="startDate">
+  </div>
+ <div class="form-group">
+    <label for="end-date">End:</label>
+      <input style="width:140px" type="date" id="end-date" data-ng-model="endDate">
+  </div>    
+  <button id="player-update-button" data-ng-click="getPlayerInfo()" type="submit" class="btn btn-default">Update</button>
+</form>
+</div>
+
+<!--Player Info-->
+    <div ng-show="playerModel.showPlayerData" class="well well-sm inverse-background inverse-text no-top-margin border-radius-4px">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3"><h5>{{playerInfo.Name}}</h5> </div>
+            <div class="col-xs-4 col-sm-3"><h5><label class="right-padding">Status:</label>{{  playerInfo.Status}}</h5></div>
+            <div class="col-xs-4 col-sm-3"><h5><label class="right-padding">Host:</label>{{  playerInfo.Host}}</h5></div>
+        </div>
+      
+    </div>
+<div ng-hide="playerModel.playerId"><div class="center"><h3>Please provide a player id.</h3></div></div>    
+<div ng-show="updatePressed"><div class="center"><h3>Loading data...</h3></div></div> 
+<div ng-hide="playerModel.hasData || !playerModel.playerId"><div class="center"><h3>No data available.</h3></div></div>     
+<div ng-show="playerModel.showPlayerData" class="container-fluid">
+  <div class="row">
+      <div class="col-sm-3">
+          
+          <div class="well well-sm background-transparent">
+          <h4><u>Slots</u></h4>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Coin In</span><span style="float:right">{{playerInfo.Slot_CI}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Jackpot</span><span style="float:right">{{playerInfo.Slot_JP}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual Win</span><span style="float:right">{{playerInfo.Slot_Act}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo Win</span><span style="float:right">{{playerInfo.Slot_Theo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total FSP</span><span style="float:right">{{playerInfo.Slot_FreePlayTotal}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Avg Bet</span><span style="float:right">{{playerInfo.Slot_AvgBet}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Net Win</span><span style="float:right">{{playerInfo.Slot_NetWin}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Net Theo</span><span style="float:right">{{playerInfo.Slot_NetTheo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Act/Theo Indx</span><span style="float:right" class="{{playerInfo.ActvTheo_Class}}">{{playerInfo.ActvTheo}}</span></div>
+            </div>
+       
+      
+           
+                <div><h4><u>Expenses</u></h4></div>
+          
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Points (Earned)</span><span style="float:right">{{playerInfo.Total_PtsCost}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Comps</span><span style="float:right">{{playerInfo.CompIssued}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Coupons</span><span style="float:right">{{playerInfo.PatronCoupons}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Kiosks</span><span style="float:right">{{playerInfo.KioskCoupons}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Promo FSP</span><span style="float:right">{{playerInfo.Slots_FreePlayPromo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Draw FSP</span><span style="float:right">{{playerInfo.Slots_FreePlayDrawing}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total Expense</span><span style="float:right">{{playerInfo.Total_Expenses}}</span></div>
+            </div>
+      </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well well-sm background-transparent">
+            <h4><u>Tables</u></h4>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Acutal Win</span><span style="float:right">{{playerInfo.Table_Act}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo Win</span><span style="float:right">{{playerInfo.Table_Theo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Time Played</span><span style="float:right">{{playerInfo.Table_Time}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Bingo Write</span><span style="float:right">{{playerInfo.BingoWrite}}</span></div>
+            </div>
+                
+             <h4><u>Gaming Summary - Net</u></h4>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Win</span><span style="float:right">{{playerInfo.Gaming_Win}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>ADW</span><span style="float:right">{{playerInfo.GADW}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo</span><span style="float:right">{{playerInfo.Gaming_Theo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>ADT</span><span style="float:right">{{playerInfo.GADT}}</span></div>
+            </div><div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Days Played</span><span style="float:right">{{playerInfo.Gaming_Days}}</span></div>
+            </div>
+       </div>
+             <div class="well well-sm top-margin-15">
+               <div><h4><u>Marginal Analysis</u></h4></div>
+             <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual Margin</span><span style="float:right">{{playerInfo.NetWin}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual %</span><span style="float:right">{{playerInfo.ActualReinvest}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo Margin</span><span style="float:right">{{playerInfo.NetTheo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo %</span><span style="float:right">{{playerInfo.TheoReinvest}}</span></div>
+            </div>   
+                   
+            </div>
+            
+        </div>
+      
+        <div class="col-sm-3">
+            <div class="well well-sm background-transparent">
+                
+                
+            <h4><u>Gaming Summary - Net</u></h4>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Win</span><span style="float:right">{{playerInfo.Gaming_Win}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>ADW</span><span style="float:right">{{playerInfo.GADW}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo</span><span style="float:right">{{playerInfo.Gaming_Theo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>ADT</span><span style="float:right">{{playerInfo.GADT}}</span></div>
+            </div><div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Days Played</span><span style="float:right">{{playerInfo.Gaming_Days}}</span></div>
+            </div>
+           
+                <div><h4><u>Points Redeemed</u></h4></div>
+         
+             <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Point FSP</span><span style="float:right">{{playerInfo.Gaming_PointComp}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Non Gaming</span><span style="float:right">{{playerInfo.NonGaming_PointComp}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right">{{playerInfo.Total_PointComp}}</span></div>
+            </div>
+           
+                <div><h4><u>Free Play</u></h4></div>
+            
+             <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Point FSP</span><span style="float:right">{{playerInfo.Gaming_PointComp}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Promo FSP</span><span style="float:right">{{playerInfo.Slots_FreePlayPromo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Draw FSP</span><span style="float:right">{{playerInfo.Slots_FreePlayDrawing}}</span></div>
+            </div><div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Total FSP</span><span style="float:right">{{playerInfo.Slot_FreePlayTotal}}</span></div>
+            </div>
+      </div>
+        </div>
+    <div class="col-sm-3">
+        <div class="well well-sm background-transparent">
+        <h4><u>Comp Summary</u></h4>
+      <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Entertain</span><span style="float:right" >{{playerInfo.Comp_Concert}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>FNB</span><span style="float:right">{{playerInfo.Comp_FNB}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Hotel</span><span style="float:right">{{playerInfo.Comp_Hotel}}</span></div>
+            </div> <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Nightlife</span><span style="float:right">{{playerInfo.Comp_Nightlife}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Other</span><span style="float:right">{{playerInfo.Comp_Other}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Retail</span><span style="float:right">{{playerInfo.Comp_Retail}}</span></div>
+            </div><div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Spa</span><span style="float:right">{{playerInfo.Comp_Spa}}</span></div>
+            </div>  <div class="row">
+
+                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right" class ="{{playerInfo.Comp_Total_Class}}">{{playerInfo.Comp_Total}}</span></div>
+
+            </div>
+        </div>
+        <div class="well well-sm top-margin-15">
+         <div><h4><u>Comps Available</u></h4></div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-8">
+                <div class="col-xs-4"> &nbsp; 
+                    <div class="row">
+                        Max
+                    </div>
+                     <div class="row">
+                        Mid
+                    </div>
+                     <div class="row">
+                        Min
+                    </div>
+                </div>
+                <div class="col-xs-4 center-text">Theo**
+                  <div class="row center-text">
+                        {{playerInfo.Comp_MaxNoFSP}}
+                    </div>
+                     <div class="row center-text">
+                        {{playerInfo.Comp_MidNoFSP}}
+                    </div>
+                     <div class="row center-text">
+                        {{playerInfo.Comp_MinNoFSP}}
+                    </div>
+                </div>
+                <div class="col-xs-4 center-text">Act**
+                  <div class="row center-text">
+                        {{playerInfo.Comp_MaxAct}}
+                    </div>
+                     <div class="row center-text">
+                        {{playerInfo.Comp_MidAct}}
+                    </div>
+                     <div class="row center-text">
+                        {{playerInfo.Comp_MinAct}}
+                    </div>
+                </div>
+            
+            </div>
+                
+            </div>
+        </div>
+        
+      </div>
+      
+        
+    </div>
+    <div class="row">
+    <div class="col-xs-12">  <div class="well well-sm background-transparent right-text">**Points, Coupons, Kiosk and Comps Only (Excludes FSP)</div></div>
+      
+    </div>
+  
+</div>
+    
+ <div ui-view="player-lookup"></div>    
+    
+</section>
