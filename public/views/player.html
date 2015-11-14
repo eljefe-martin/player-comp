@@ -69,10 +69,11 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Act/Theo Indx</span><span style="float:right" class="{{playerInfo.ActvTheo_Class}}">{{playerInfo.ActvTheo}}</span></div>
             </div>
-       
+         <div class="row">
+              <div class="col-sm-12 col-xs-6"><span></span></div>
+              </div>
       
-           
-                <div><h4><u>Expenses</u></h4></div>
+                          <div><h4><u>Expenses</u></h4></div>
           
             <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Points (Earned)</span><span style="float:right">{{playerInfo.Total_PtsCost}}</span></div>
@@ -112,11 +113,8 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Bingo Write</span><span style="float:right">{{playerInfo.BingoWrite}}</span></div>
             </div>
-                </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="well well-sm background-transparent">
-            <h4><u>Gaming Summary - Net</u></h4>
+                
+             <h4><u>Gaming Summary - Net</u></h4>
             <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Win</span><span style="float:right">{{playerInfo.Gaming_Win}}</span></div>
             </div>
@@ -131,8 +129,31 @@
             </div><div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Days Played</span><span style="float:right">{{playerInfo.Gaming_Days}}</span></div>
             </div>
-           
-                <div><h4><u>Points Redeemed</u></h4></div>
+       </div>
+     
+             <div class="well well-sm top-margin-15">
+               <div><h4><u>Marginal Analysis</u></h4></div>
+             <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual Margin</span><span style="float:right">{{playerInfo.NetWin}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Actual %</span><span style="float:right">{{playerInfo.ActualReinvest}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo Margin</span><span style="float:right">{{playerInfo.NetTheo}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Theo %</span><span style="float:right">{{playerInfo.TheoReinvest}}</span></div>
+            </div>   
+                   
+            </div>
+            
+        </div>
+      
+        <div class="col-sm-3">
+            <div class="well well-sm background-transparent">
+                
+             <div><h4><u>Points Redeemed</u></h4></div>
          
              <div class="row">
                 <div class="col-sm-12 col-xs-6"><span>Point FSP</span><span style="float:right">{{playerInfo.Gaming_PointComp}}</span></div>
@@ -158,31 +179,8 @@
                 <div class="col-sm-12 col-xs-6"><span>Total FSP</span><span style="float:right">{{playerInfo.Slot_FreePlayTotal}}</span></div>
             </div>
       </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="well well-sm background-transparent">
-        <h4><u>Comp Summary</u></h4>
-      <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Entertain</span><span style="float:right" >{{playerInfo.Comp_Concert}}</span></div>
-            </div>  <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>FNB</span><span style="float:right">{{playerInfo.Comp_FNB}}</span></div>
-            </div>  <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Hotel</span><span style="float:right">{{playerInfo.Comp_Hotel}}</span></div>
-            </div> <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Nightlife</span><span style="float:right">{{playerInfo.Comp_Nightlife}}</span></div>
-            </div>  <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Other</span><span style="float:right">{{playerInfo.Comp_Other}}</span></div>
-            </div>  <div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Retail</span><span style="float:right">{{playerInfo.Comp_Retail}}</span></div>
-            </div><div class="row">
-                <div class="col-sm-12 col-xs-6"><span>Spa</span><span style="float:right">{{playerInfo.Comp_Spa}}</span></div>
-            </div>  <div class="row">
-
-                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right" class ="{{playerInfo.Comp_Total_Class}}">{{playerInfo.Comp_Total}}</span></div>
-
-            </div>
-        </div>
-        <div class="well well-sm top-margin-15">
+            
+                    <div class="well well-sm top-margin-15">
          <div><h4><u>Comps Available</u></h4></div>
         <div class="row">
             <div class="col-sm-12 col-xs-8">
@@ -224,6 +222,33 @@
                 
             </div>
         </div>
+            
+            
+        </div>
+    <div class="col-sm-3">
+        <div class="well well-sm background-transparent">
+        <h4><u>Comp Summary</u></h4>
+      <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Entertain</span><span style="float:right" >{{playerInfo.Comp_Concert}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>FNB</span><span style="float:right">{{playerInfo.Comp_FNB}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Hotel</span><span style="float:right">{{playerInfo.Comp_Hotel}}</span></div>
+            </div> <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Nightlife</span><span style="float:right">{{playerInfo.Comp_Nightlife}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Other</span><span style="float:right">{{playerInfo.Comp_Other}}</span></div>
+            </div>  <div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Retail</span><span style="float:right">{{playerInfo.Comp_Retail}}</span></div>
+            </div><div class="row">
+                <div class="col-sm-12 col-xs-6"><span>Spa</span><span style="float:right">{{playerInfo.Comp_Spa}}</span></div>
+            </div>  <div class="row">
+
+                <div class="col-sm-12 col-xs-6"><span>Total</span><span style="float:right" class ="{{playerInfo.Comp_Total_Class}}">{{playerInfo.Comp_Total}}</span></div>
+
+            </div>
+        </div>
+
         
       </div>
       

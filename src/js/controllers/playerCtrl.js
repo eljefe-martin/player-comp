@@ -3,7 +3,7 @@
 controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUtility', 
                                       function($scope, $http, playerService, dateUtility){
     var dt = new Date();
-    dt.setDate(dt.getDate()-1);
+    dt.setDate(dt.getDate());
 
     var _playerId = undefined;                                      
     //set up some event handlers for when data changes
