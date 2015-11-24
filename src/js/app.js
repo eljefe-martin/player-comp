@@ -38,6 +38,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                 controller: 'postCommentCtrl'
             }
         }
+      })  
+      .state('report', {
+        url: '/report',
+        views: {
+            "" : {
+                templateUrl: 'views/report.html',
+                controller: 'reportCtrl'
+            },
+            "post-comment" : {
+                templateUrl: 'views/post-comment.html',
+                controller: 'postCommentCtrl'
+            }
+        }
       })
       .state('login', {
         url: '/login',

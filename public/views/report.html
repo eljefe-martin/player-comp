@@ -1,0 +1,23 @@
+<section>
+<!--Player Info-->
+    <div class="well well-sm no-top-margin border-radius-4px">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3"><h5>{{playerInfo.Name}}</h5> </div>
+            <div class="col-xs-3 col-sm-3"><h5><label class="right-padding">Status:</label>{{playerInfo.Status}}</h5></div>
+            <div class="col-xs-3 col-sm-3"><h5><label class="right-padding">Host:</label>{{playerInfo.Host}}</h5></div>
+        
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label for="days">Analysis:</label>
+                    <select name="days" class="form-control" id="days" data-ng-model="dateOptions.selectedOption" data-ng-change="updateDates()" 
+                            data-ng-options="option.label for option in reportOptions.availableOptions track by option.id">
+                    </select>
+                </div></form>
+        </div>
+    </div>
+<div class="container-fluid">
+   <div class="jumbotron">Reports</div>
+    
+</div>
+
+</section>

@@ -17,6 +17,7 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
             $scope.playerModel.showPlayerData = false;
             $("#comment-log-tab").hide();
             $("#comment-button").hide();
+            $("#report-tab").hide();
         });
                                           
     //date dropdown options
@@ -73,11 +74,13 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
                     $scope.playerModel.showPlayerData = false;
                     $("#comment-log-tab").hide();
                     $("#comment-button").hide();
+                    $("#report-tab").hide();
                 } else {
                     //show the comment tab
                     $scope.playerModel.hasData = true;
                     $("#comment-log-tab").show();
                     $("#comment-button").show();
+                    $("#report-tab").show();
                     playerService.setPlayerInfo($scope.playerInfo);
                     $scope.playerModel.showPlayerData = true;
                 } 
@@ -111,6 +114,7 @@ controllers.controller('playerCtrl', ['$scope', '$http', 'playerService','dateUt
             $scope.$apply();
             $("#comment-log-tab").hide();
             $("#comment-button").hide();
+            $("#report-tab").hide();
     
     };                                    
      //call init                                      

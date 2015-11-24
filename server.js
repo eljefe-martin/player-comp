@@ -66,6 +66,17 @@ app.get('/api/comments/:id', function(req, res) {
     });
 
     res.send(data);
+});  
+
+//reports
+app.get('/api/report/:reportId/:playerId', function(req, res) {
+
+     
+    
+    res.send(myData.reportData.report1[0]);
+//        access parm using req.params.id 
+        
+
 });   
 
 
