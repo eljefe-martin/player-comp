@@ -38,20 +38,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                 controller: 'postCommentCtrl'
             }
         }
-      })  
+      }) 
+    //Report states with nested report views
       .state('report', {
         url: '/report',
-        views: {
-            "" : {
-                templateUrl: 'views/report.html',
-                controller: 'reportCtrl'
-            },
-            "post-comment" : {
-                templateUrl: 'views/post-comment.html',
-                controller: 'postCommentCtrl'
-            }
-        }
+        templateUrl: 'views/report.html',
+        controller: 'reportCtrl'
       })
+      .state('report.player-card-level', {
+        url: '/player-card-level',
+        templateUrl: 'views/player-card-level.html',
+        controller: 'reportDataCtrl'
+      })      
+      .state('report.player-history-summary', {
+        url: '/player-history-summary',
+        templateUrl: 'views/player-history-summary.html',
+        controller: 'reportCtrl'
+      })
+    //end report states
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',

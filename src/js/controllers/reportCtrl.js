@@ -1,39 +1,42 @@
 'use strict';
 
-controllers.controller('reportCtrl', ['$scope', '$http', 'playerService', function($scope, $http, playerService){
+controllers.controller('reportCtrl', ['$state','$scope', '$http', 'playerService', function($state, $scope, $http, playerService){
     
                                               
     //contoller function that maps to the service function                                      
                                   
     $scope.playerInfo = playerService.getPlayerInfo();
     $scope.playerId = playerService.getPlayerId();
-    $scope.getCommentLog();
+    $scope.reportData = undefined;
     
-    
-     $scope.getReportData = function(reportId){
-        
-              
-        $http.get('/api/report/' + reportId + '/' + $scope.playerId)
-            .success(function(res){
-                //do something
-                console.log(res);
-            })
-            .error(function(res){
-                console.log(res);
-            });
-//          
-     };
     
     //Analysis dropdown options
-    $scope.reportOptions = {
-        availableOptions: [
-            {id:1, label:"Player Card Level Information"},
-            {id:2, lable:"Player History Summary"}
-        ]
+    $scope.reportOptions = [
+        { 
+            reportId: 1,
+            state:'report.player-card-level', 
+            label:"Player Card Level Information"
+        }, 
+        {
+            reportId: 2,
+            state:'report.player-history-summary', 
+            label:"Player History Summary"
+        }   
+    ];
+    
+    //default report will be Player Card Level Information"
+    $scope.reportMain = {
+        selectedReport :  $scope.reportOptions[0] 
+        
     };
-
+    
                                           
-
+    //function called when hitting the run button
+    $scope.runReport = function(){
+        //changing the state will open the report template and call the reportData contolrler
+        $state.go($scope.reportMain.selectedReport.state);
+    };
+    
 }]);
 
 

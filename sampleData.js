@@ -190,7 +190,7 @@ exports.playerLookupData = {
 
 //reports data
 exports.reportData = {
-    report1:[
+    reportId1:[
         {clPlayerID: 456, GoalType: "Earn some points", CurrentDesc:"Celebrity", GoalDesc:"Celebrity", 
          clTotalCredits: 16145, clPointstoNext:13852, clStatusAttained: new Date('07/01/2015'), 
          clExpireDate: new Date('12/31/2015'), clStatus: "?", clNextStatus: "?", 
@@ -199,5 +199,5 @@ exports.reportData = {
          clSpaCredits:0, clMoblieCredits:0, clPromoCredits:0, clBonusCredits:0, clCredits:0,
                       clProcess:0, Name:"JOSE ANTONIO"}
     ],
-    report2:[]
+    reportId2:[]
 };

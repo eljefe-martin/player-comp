@@ -73,7 +73,7 @@ app.get('/api/report/:reportId/:playerId', function(req, res) {
 
      
     
-    res.send(myData.reportData.report1[0]);
+    res.send(myData.reportData.reportId1[0]);
 //        access parm using req.params.id 
         
 
