@@ -1,68 +1,168 @@
 <div id="player-card-level" class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <h3 class="center"> {{reportData.GoalType}}</h3>
+            <h4 class="center-text">{{reportData.GoalType}}</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4 col-xs-12" id="col1">
+        <div class="col-sm-offset-2 col-sm-4 col-xs-12" id="col1">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Current Status:</b></span><span   style="float:right">{{reportData.CurrentDesc}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Current Status:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.CurrentDesc}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Goal Status:</b></span><span   style="float:right">{{reportData.GoalDesc}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Goal Status:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.GoalDesc}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Total Credits:</b></span><span   style="float:right">{{reportData.clTotalCredits}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Total Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clTotalCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Credits to Next:</b></span><span   style="float:right">{{reportData.clPointstoNext}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Credits to Next:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clPointstoNext}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Date Status Attained:</b></span><span   style="float:right">{{reportData.clStatusAttained | date : 'short'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Date Status Attained:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clStatusAttained | date : 'short'}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Status Expire Date:</b></span><span   style="float:right">{{reportData.clExpireDate | date : 'short'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Status Expire Date:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clExpireDate | date : 'short'}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Last Update:</b></span><span   style="float:right">{{reportData.clDateUpdated | date : 'medium'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Last Update:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clDateUpdated | date : 'medium'}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Last Play Date:</b></span><span   style="float:right">{{reportData.clLastPlay | date : 'short'}}</span>                     </div>
+                        <span>
+                            <b>Last Play Date:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clLastPlay | date : 'short'}}</span>
+                    </div>
                 </div>
             </div>
-        </div>  
-        
+        </div>
         <div class="col-sm-4 col-xs-12" id="col2">
             <div class="well well-sm">
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col-xs-12">
+                        <span>
+                            <b>Credit Earning Detail</b>
+                        </span>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Current Status:</b></span><span   style="float:right">{{reportData.CurrentDesc}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Slot Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clSlotCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Goal Status:</b></span><span   style="float:right">{{reportData.GoalDesc}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Table Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clTableCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Total Credits:</b></span><span   style="float:right">{{reportData.clTotalCredits}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Bingo Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clBingoCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Credits to Next:</b></span><span   style="float:right">{{reportData.clPointstoNext}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Sport Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clSportCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Date Status Attained:</b></span><span   style="float:right">{{reportData.clStatusAttained | date : 'short'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Food Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clFoodCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Status Expire Date:</b></span><span   style="float:right">{{reportData.clExpireDate | date : 'short'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Hotel Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clHotelCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Last Update:</b></span><span   style="float:right">{{reportData.clDateUpdated | date : 'medium'}}</span>                     </div>
-                </div>                <div class="row">
+                        <span>
+                            <b>Spa Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clSpaCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <span><b>Last Play Date:</b></span><span   style="float:right">{{reportData.clLastPlay | date : 'short'}}</span>                     </div>
+                        <span>
+                            <b>Mobile Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clMobileCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span>
+                            <b>Promo Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clPromoCredits}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span>
+                            <b>Bonus Credits:</b>
+                        </span>
+                        <span   style="float:right">{{reportData.clBonusCredits}}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>   
+</div> 

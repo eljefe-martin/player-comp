@@ -72,8 +72,25 @@ app.get('/api/comments/:id', function(req, res) {
 app.get('/api/report/:reportId/:playerId', function(req, res) {
 
      
+    //determine report Id to know which proc to call
+    switch(req.params.reportId) {
+        
+        case "1":
+            {
+                res.send(myData.reportData.reportId1[0]);
+                
+            }
+            break;
+        case "2":
+            {
+                
+                
+            }
+            break;
+        default:
+            console.log("missing report definition for reportId:" + req.params.reportId)
+    }
     
-    res.send(myData.reportData.reportId1[0]);
 //        access parm using req.params.id 
         
 

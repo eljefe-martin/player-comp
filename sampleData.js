@@ -196,7 +196,7 @@ exports.reportData = {
          clExpireDate: new Date('12/31/2015'), clStatus: "?", clNextStatus: "?", 
          clDateUpdated: new Date(), clLastPlay: new Date("10/24/2015"), clSlotCredits:16000, 
          clTableCredits:0, clBingoCredits:0, clSportCredits:0, clFoodCredits:0, clHotelCredits:0, 
-         clSpaCredits:0, clMoblieCredits:0, clPromoCredits:0, clBonusCredits:0, clCredits:0,
+         clSpaCredits:0, clMobileCredits:0, clPromoCredits:0, clBonusCredits:0, clCredits:0,
                       clProcess:0, Name:"JOSE ANTONIO"}
     ],
     reportId2:[]

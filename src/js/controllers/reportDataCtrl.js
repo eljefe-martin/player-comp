@@ -12,7 +12,6 @@ controllers.controller('reportDataCtrl', ['$scope', '$http', 'playerService', fu
         $http.get('/api/report/' + reportId + '/' + playerService.getPlayerId())
             .success(function(res){
                 //do something
-                console.log(res);
                 $scope.reportData = res;
             })
             .error(function(res){
