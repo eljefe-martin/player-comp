@@ -199,5 +199,15 @@ exports.reportData = {
          clSpaCredits:0, clMobileCredits:0, clPromoCredits:0, clBonusCredits:0, clCredits:0,
                       clProcess:0, Name:"JOSE ANTONIO"}
     ],
-    reportId2:[]
+    reportId2:[
+        {PeriodID: new Date('2015-11-30'), PeriodDays: 30,  SlotTier:8, TableTier:0, Tier_LVL:8, Gaming_Visit:4,
+         SlotCI:2452,    SlotWin:559,                SlotTheo  :265,              SlotFreePlay :103,      TableWin :0 ,
+         TableTheo: 0,          ADT:66,        ADA :140,      ADTC:1.1444353},
+   {PeriodID: new Date('2015-11-30'), PeriodDays: 30,  SlotTier:8, TableTier:0, Tier_LVL:8, Gaming_Visit:4,
+         SlotCI:2452,    SlotWin:559,                SlotTheo  :265,              SlotFreePlay :103,      TableWin :0 ,
+         TableTheo: 0,          ADT:66,        ADA :140,      ADTC:1.1444353},
+   {PeriodID: new Date('2015-11-30'), PeriodDays: 30,  SlotTier:8, TableTier:0, Tier_LVL:8, Gaming_Visit:4,
+         SlotCI:2452,    SlotWin:559,                SlotTheo  :265,              SlotFreePlay :103,      TableWin :0 ,
+         TableTheo: 0,          ADT:66,        ADA :140,      ADTC:1.1444353}
+    ]
 };

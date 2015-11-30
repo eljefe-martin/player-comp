@@ -9,7 +9,7 @@
         <div class="row">
         <div class="col-xs-9 col-sm-9">
              <form class="form-inline">
-              <div class="form-group">                <label for="days">Analysis:</label>
+              <div class="form-group">                <label for="report">Analysis:</label>
                     <select class="form-control" name="report" id="report" data-ng-model="reportMain.selectedReport" data-ng-options="option.label for option in reportOptions track by option.state">
                     </select>
                   </div>
@@ -20,6 +20,8 @@
         </div>
     </div>
 <!--    REPORT VIEWS-->
-    <div ui-view></div>
+    <div data-ng-show="reportMain.showData">
+        <div ui-view></div>
+    </div>
 
 </section>

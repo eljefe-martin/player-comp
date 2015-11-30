@@ -83,8 +83,7 @@ app.get('/api/report/:reportId/:playerId', function(req, res) {
             break;
         case "2":
             {
-                
-                
+              res.send(myData.reportData.reportId2); 
             }
             break;
         default:
@@ -125,9 +124,6 @@ app.post('/api/player-lookup', function(req, res) {
         lastName: req.body.lastName,
         birthdate: req.body.birthdate
     };
-    
-    console.log(playerInfo);
-    
     res.send(myData.playerLookupData.players);
    
 });

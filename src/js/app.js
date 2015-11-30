@@ -53,7 +53,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       .state('report.player-history-summary', {
         url: '/player-history-summary',
         templateUrl: 'views/player-history-summary.html',
-        controller: 'reportCtrl'
+        controller: 'reportDataCtrl'
       })
     //end report states
       .state('login', {

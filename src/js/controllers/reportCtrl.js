@@ -9,7 +9,6 @@ controllers.controller('reportCtrl', ['$state','$scope', '$http', 'playerService
     $scope.playerId = playerService.getPlayerId();
     $scope.reportData = undefined;
     
-    
     //Analysis dropdown options
     $scope.reportOptions = [
         { 
@@ -26,7 +25,8 @@ controllers.controller('reportCtrl', ['$state','$scope', '$http', 'playerService
     
     //default report will be Player Card Level Information"
     $scope.reportMain = {
-        selectedReport :  $scope.reportOptions[0] 
+        selectedReport :  $scope.reportOptions[0],
+        showData: false
         
     };
     
@@ -36,6 +36,13 @@ controllers.controller('reportCtrl', ['$state','$scope', '$http', 'playerService
         //changing the state will open the report template and call the reportData contolrler
         $state.go($scope.reportMain.selectedReport.state);
     };
+    
+    
+    //watch for change of analysis to clear out current report
+    $( "#report" )
+        .change(function(){
+            $scope.reportMain.showData = false;
+        });
     
 }]);
 
