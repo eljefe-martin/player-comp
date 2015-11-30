@@ -206,7 +206,80 @@ app.post('/api/post-comment', function(req, res) {
 
 });   
 
+//reports
+app.get('/api/report/:reportId/:playerId', function(req, res) {
 
+     
+    //determine report Id to know which proc to call
+    switch(req.params.reportId) {
+        
+        case "1":
+            {
+              
+                var connection =  new sql.Connection(config, function(err) {
+      
+                //add some error handling here
+                if(err){
+                    console.log(err);
+                    return;
+                }
+          
+                //set up the request   
+                var request = new sql.Request(connection);
+                request.input('PlayerID', req.params.playerId);
+                request.execute('dbo.asp_PlayerCardLevel', function(err, rs) {
+                    
+                if(err){
+                    console.log(err);
+                    return;
+                }
+            
+                res.send(rs[0][0]);
+                });   
+
+                connection.on('error', function(err) {
+                    console.log("there was an error");
+                }); 
+                });
+            }
+            break;
+        case "2":
+            {
+                 var connection =  new sql.Connection(config, function(err) {
+      
+                //add some error handling here
+                if(err){
+                    console.log(err);
+                    return;
+                }
+          
+                //set up the request   
+                var request = new sql.Request(connection);
+                request.input('PlayerID', req.params.playerId);
+                request.execute('dbo.asp_PlayerHistorySummary', function(err, rs) {
+                    
+                if(err){
+                    console.log(err);
+                    return;
+                }
+            
+                res.send(rs[0]);
+                });   
+
+                connection.on('error', function(err) {
+                    console.log("there was an error");
+                }); 
+                });
+            }
+            break;
+        default:
+            console.log("missing report definition for reportId:" + req.params.reportId)
+    }
+    
+//        access parm using req.params.id 
+    
+
+});  
 
 app.post('/api/login', function(req, res) {
 

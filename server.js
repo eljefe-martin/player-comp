@@ -91,6 +91,7 @@ app.get('/api/report/:reportId/:playerId', function(req, res) {
     }
     
 //        access parm using req.params.id 
+    //[dbo].[asp_PlayerCardLevel]
         
 
 });   
